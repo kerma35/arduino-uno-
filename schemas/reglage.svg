@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 832 372" width="832" height="372">
+<title>Réglage de la course des servos</title>
+<style>
+:root {
+  --bg: #EBEFF2; --surface: #FFFFFF; --surface-2: #DFE6EC; --ink: #121B24; --muted: #526170; --line: #C3CDD6;
+  --accent: #0A5D7A; --accent-soft: #D3E7EE;
+  --warn-bg: #FFF3D6; --warn-line: #D99A00; --warn-ink: #4A3700;
+  --danger: #BF2229;
+  --code-bg: #0F1720; --code-ink: #DCE5EE; --code-com: #8397AA; --code-line: #26313C;
+  --w-pos: #D7262E; --w-gnd: #1E2328; --w-brown: #7B4A26; --w-sig: #EE8600; --w-tx: #159A55; --w-rx: #2873CF; --w-usb: #707D8A;
+  --pcb: #0C8287; --pcb-ink: #E9FBFB; --hdr: #1A1F25; --pin: #D9B55A; --chip: #1F262E; --chip-ink: #C4D0DA;
+  --servo: #2A3037; --servo-ink: #E6EAEE; --horn: #F5F5F2; --metal: #B5BDC5; --psu: #262B31; --term: #2E9A5B;
+  --cap: #24344E; --cap-stripe: #CBD3DC; --bb: #F6F6F2; --bb-line: #C9CDD0; --bb-hole: #9AA3AC; --ttl: #A8243A; --jumper: #E6BE14;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+:root { --shield: #1D3D6E; --shield-ink: #E4ECF8; --shield-line: #3A6BB5; --jack: #1C1F23; }
+svg { color: var(--ink); }
+/* SVG */
+.pcb { fill: var(--pcb); }
+.hole { fill: var(--bg); stroke: var(--metal); stroke-width: 1.5; }
+.metal { fill: var(--metal); }
+.usb-in { fill: #3A4148; }
+.pcb-t, .pcb-s { fill: var(--pcb-ink); font: 600 11px var(--font-mono); }
+.pcb-s { font-size: 9.5px; font-weight: 500; }
+.pcb-name { fill: var(--pcb-ink); font: 700 17px var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.chip { fill: var(--chip); }
+.chip-t { fill: var(--chip-ink); font: 600 11px var(--font-mono); }
+.chip-s { fill: var(--chip-ink); font: 400 9.5px var(--font-mono); opacity: .85; }
+.hdr { fill: var(--hdr); }
+.pin { fill: var(--pin); }
+.pin-t { fill: var(--pcb-ink); font: 500 8.5px var(--font-mono); opacity: .8; }
+.pin-t.hl { font-weight: 700; font-size: 10px; opacity: 1; }
+.pin-t.warn { fill: #FFD1D3; font-weight: 700; opacity: 1; }
+.pin-ring { fill: none; stroke: #FFFFFF; stroke-width: 2; }
+.servo { fill: var(--servo); }
+.servo-t { fill: var(--servo-ink); font: 700 13px var(--font-display); letter-spacing: .06em; }
+.horn { fill: var(--horn); stroke: #9AA2AA; stroke-width: 1; }
+.screw { fill: #8C949C; }
+.lbl { fill: var(--ink); font: 600 13px var(--font-body); }
+.sub { fill: var(--muted); font: 400 12px var(--font-body); }
+.sub.strong { fill: var(--ink); font-weight: 600; }
+.lbl.red, .sub.red, .red { fill: var(--danger); }
+.sub.accent { fill: var(--accent); font-weight: 600; }
+.sub.mono, .mono-s { font-family: var(--font-mono); font-size: 11.5px; }
+.mono-s { fill: var(--ink); }
+.wire { fill: none; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.wire.thin { stroke-width: 2.4; }
+.wire.faint { stroke-dasharray: 4 4; }
+.w-pos { stroke: var(--w-pos); } .w-gnd { stroke: var(--w-gnd); } .w-brown { stroke: var(--w-brown); }
+.w-sig { stroke: var(--w-sig); } .w-tx { stroke: var(--w-tx); } .w-rx { stroke: var(--w-rx); } .w-usb { stroke: var(--w-usb); stroke-width: 5; }
+.dot { stroke: var(--surface); stroke-width: 1.5; }
+.dot.pos { fill: var(--w-pos); } .dot.gnd { fill: var(--w-gnd); } .dot.brown { fill: var(--w-brown); }
+.dot.sig { fill: var(--w-sig); } .dot.tx { fill: var(--w-tx); } .dot.rx { fill: var(--w-rx); }
+.bar { stroke-width: 7; stroke-linecap: round; }
+.bar.pos { stroke: var(--w-pos); } .bar.gnd { stroke: var(--w-gnd); }
+.psu { fill: var(--psu); }
+.psu-t { fill: #F2F4F6; font: 700 15px var(--font-display); letter-spacing: .05em; }
+.psu-s { fill: #AEB7C0; font: 400 10.5px var(--font-body); }
+.term-pos { fill: var(--surface); stroke: var(--w-pos); stroke-width: 3; }
+.term-neg { fill: var(--surface); stroke: var(--w-gnd); stroke-width: 3; }
+.leg { stroke: var(--metal); stroke-width: 3; }
+.cap { fill: var(--cap); }
+.cap-stripe { fill: var(--cap-stripe); }
+.cap-minus { fill: var(--cap); font: 700 13px var(--font-body); }
+.cap-t { fill: #DCE4EE; font: 600 10px var(--font-mono); }
+.cross { stroke: var(--danger); stroke-width: 2.4; stroke-linecap: round; fill: none; }
+.plug { fill: #3B434B; }
+.ttl { fill: var(--ttl); }
+.ttl-t { fill: #FFF1F3; font: 600 9.5px var(--font-mono); }
+.jumper { fill: var(--jumper); }
+.box { fill: var(--surface); stroke: var(--ink); stroke-width: 1.4; }
+.box.hl { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+.bound { fill: none; stroke: var(--pcb); stroke-width: 2; stroke-dasharray: 7 6; }
+.flow { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.flow.sig { stroke: var(--w-sig); stroke-width: 3; }
+.net { stroke: var(--muted); stroke-width: 1.5; }
+.net-l { stroke: var(--muted); stroke-width: 1.2; }
+.cord { fill: none; stroke-width: 2.2; stroke-linecap: round; }
+.cord.rest { stroke: var(--muted); }
+.cord.max { stroke: var(--accent); stroke-dasharray: 6 5; }
+.arm { stroke: var(--horn); stroke-width: 10; stroke-linecap: round; }
+.arm.max { stroke: var(--accent); opacity: .55; }
+.pull { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; }
+.swing { fill: none; stroke: var(--ink); stroke-width: 1.5; color: var(--ink); }
+.conn { fill: #22272D; stroke: var(--metal); stroke-width: 1; }
+.cable { fill: none; stroke: #4A525A; stroke-width: 5; stroke-linecap: round; }
+.term { fill: var(--term); }
+.screw-big { fill: var(--metal); stroke: #7D868F; stroke-width: 1.5; }
+.bb { fill: var(--bb); stroke: var(--bb-line); stroke-width: 1; }
+.bb-pos { stroke: #D7262E; stroke-width: 2; } .bb-neg { stroke: #2563C9; stroke-width: 2; }
+.bb-t { font: 700 14px var(--font-body); } .bb-t.red { fill: #D7262E; } .bb-t.blue { fill: #2563C9; }
+.bb-hole { fill: var(--bb-hole); }
+.pinline { stroke: var(--metal); stroke-width: 3; }
+.t-brown { fill: var(--w-brown); font-weight: 600; } .t-red { fill: var(--w-pos); font-weight: 600; } .t-sig { fill: var(--w-sig); font-weight: 600; }
+
+.shield { fill: var(--shield); }
+.shield-t { fill: var(--shield-ink); font: 700 15px var(--font-display); letter-spacing: .06em; }
+.shield-s { fill: var(--shield-ink); font: 500 10.5px var(--font-mono); }
+.unused { opacity: .5; }
+.jack { fill: var(--jack); stroke: var(--metal); stroke-width: 1; }
+.box.pwr { stroke: var(--w-pos); stroke-width: 2; }
+.flow.pwr { stroke: var(--w-pos); stroke-width: 2.4; }
+.mk-pwr { fill: var(--w-pos); }
+.bound.shield-b { stroke: var(--shield-line); }
+.cord-c { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+</style>
+<rect width="832" height="372" rx="14" fill="#FFFFFF" stroke="#C3CDD6"/>
+<g transform="translate(16 16)">
+
+<defs><pattern id="net1" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" class="net-l"/><line x1="0" y1="0" x2="14" y2="0" class="net-l"/></pattern><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+<rect x="50" y="20" width="260" height="56" rx="6" class="net" fill="url(#net1)"/>
+<text x="180" y="14" class="sub strong" text-anchor="middle">filet gauche</text>
+<rect x="170" y="236" width="90" height="46" rx="5" class="servo"/>
+<rect x="188" y="228" width="24" height="10" rx="2" class="servo"/>
+<path d="M200 182 C 182 150, 214 110, 200 76" class="cord rest"/>
+<line x1="200" y1="230" x2="200" y2="182" class="arm"/>
+<line x1="200" y1="230" x2="250" y2="230" class="arm max"/>
+<line x1="250" y1="230" x2="200" y2="92" class="cord max"/>
+<path d="M140 76 Q 200 112, 260 76" class="pull"/>
+<circle cx="200" cy="230" r="9" class="horn"/>
+<circle cx="200" cy="230" r="2.4" class="screw"/>
+<path d="M200 166 A 64 64 0 0 1 264 230" class="swing" marker-end="url(#ah2)"/>
+<text x="266" y="176" class="sub" text-anchor="start">≈ 90°</text>
+<text x="186" y="150" class="sub" text-anchor="end">repos</text>
+<text x="186" y="164" class="sub" text-anchor="end">mou</text>
+<text x="240.0" y="120" class="sub accent" text-anchor="start">max : tiré</text>
+<text x="215" y="306" class="mono-s" text-anchor="middle">GAUCHE_REPOS = 20</text>
+<text x="215" y="324" class="mono-s" text-anchor="middle">GAUCHE_MAX = 110</text>
+<rect x="490" y="20" width="260" height="56" rx="6" class="net" fill="url(#net1)"/>
+<text x="620" y="14" class="sub strong" text-anchor="middle">filet droit</text>
+<rect x="540" y="236" width="90" height="46" rx="5" class="servo"/>
+<rect x="588" y="228" width="24" height="10" rx="2" class="servo"/>
+<path d="M600 182 C 618 150, 586 110, 600 76" class="cord rest"/>
+<line x1="600" y1="230" x2="600" y2="182" class="arm"/>
+<line x1="600" y1="230" x2="550" y2="230" class="arm max"/>
+<line x1="550" y1="230" x2="600" y2="92" class="cord max"/>
+<path d="M540 76 Q 600 112, 660 76" class="pull"/>
+<circle cx="600" cy="230" r="9" class="horn"/>
+<circle cx="600" cy="230" r="2.4" class="screw"/>
+<path d="M600 166 A 64 64 0 0 0 536 230" class="swing" marker-end="url(#ah2)"/>
+<text x="534" y="176" class="sub" text-anchor="end">≈ 90°</text>
+<text x="614" y="150" class="sub" text-anchor="start">repos</text>
+<text x="614" y="164" class="sub" text-anchor="start">mou</text>
+<text x="560.0" y="120" class="sub accent" text-anchor="end">max : tiré</text>
+<text x="585" y="306" class="mono-s" text-anchor="middle">DROIT_REPOS = 160</text>
+<text x="585" y="324" class="mono-s" text-anchor="middle">DROIT_MAX = 70</text>
+
+</g>
+</svg>
