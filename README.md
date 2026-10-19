@@ -15,6 +15,8 @@ Les prises servo du shield sont reliées directement à D9 et D10 de l'Uno, avec
 | [`tendeur_filets_uno_r3/tendeur_filets_uno_r3.ino`](tendeur_filets_uno_r3/tendeur_filets_uno_r3.ino) | Programme de l'Uno (bibliothèque Servo, fournie avec Arduino IDE) |
 | [`simhub/message_mise_a_jour.js`](simhub/message_mise_a_jour.js) | Formule JavaScript pour SimHub › Custom serial devices › Update messages |
 | [`schemas/`](schemas) | Schémas de ce README |
+| [`matrice_led_16x16/`](matrice_led_16x16) | Autre projet : matrice LED 16 × 16 pilotée par SimHub (voir son README) |
+| [`simhub/matrice_message.js`](simhub/matrice_message.js) | Formule SimHub de la matrice LED |
 
 ## Matériel
 
