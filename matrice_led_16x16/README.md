@@ -14,7 +14,7 @@ Une matrice WS2812B de 256 LED, pilotée par une Arduino Uno Rev3 (ou une Nano) 
 ## Matériel
 
 - Arduino Uno Rev3 ou Nano. **Pas la même carte que le tendeur de filets** : l'affichage de la matrice bloque les interruptions et ferait trembler les servos.
-- Matrice WS2812B 16 × 16
+- Matrice WS2812B 16 × 16 (testée sur le papier avec la BTF-LIGHTING souple FPCB, 5050, fils ECO)
 - Alimentation 5 V, 3 A minimum (4 A conseillé)
 - Condensateur 1000 µF, 10 V ou plus
 - Résistance 330 à 470 Ω
@@ -35,6 +35,22 @@ L'Uno sort du 5 V sur ses broches : pas besoin de convertisseur de niveau, contr
 | USB | Uno → PC | Données SimHub |
 
 Le programme limite la luminosité à environ 15 % (`LUMINOSITE = 40`) et le courant à 2 A (`COURANT_MAX_MA`). Si ton alimentation est plus petite, baisse `COURANT_MAX_MA`.
+
+### Matrice BTF-LIGHTING 16 × 16 souple
+
+Elle fonctionne avec le programme tel quel : WS2812B en 5 V, ordre des couleurs GRB. La liste de contrôleurs de la fiche (SP803E, SP107E, K-1000C…) ne sert pas ici, c'est l'Uno qui pilote.
+
+| Connecteur | Branchement |
+| --- | --- |
+| Connecteur 3 broches côté entrée (flèche, DIN) | Fil de données vers D6 via la résistance, GND vers la masse de l'Uno |
+| Paire rouge / noir plus grosse à côté | Alimentation 5 V, avec le condensateur entre les deux |
+| Connecteur côté sortie (DOUT) | Rien |
+
+Vérifie le marquage imprimé sur le circuit : la couleur des fils peut varier selon les lots.
+
+- **Fils « alliage ECO »** : aluminium cuivré, plus résistant que le cuivre. Avec 2 A ça reste confortable ; ne monte pas `COURANT_MAX_MA` au-delà de 3000 sans réinjecter le 5 V aussi côté sortie. Entre l'alimentation et la matrice, prends du vrai cuivre d'au moins 0,5 mm².
+- **Sens de câblage** : serpentin, par lignes ou par colonnes selon les lots, avec un départ dans le coin du DIN. Pose la matrice dans sa position finale, puis règle `ECHANGER_XY`, `MIROIR_X` et `MIROIR_Y` avec le test des coins (étape 2).
+- **Montage** : colle-la sur une plaque rigide (contreplaqué fin, alu), et place le plexiglas dépoli à 5–10 mm devant pour fondre les pixels.
 
 ## 1. Installer le programme
 
