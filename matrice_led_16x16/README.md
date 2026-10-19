@@ -14,7 +14,7 @@ Une matrice WS2812B de 256 LED, pilotée par une Arduino Uno Rev3 (ou une Nano) 
 ## Matériel
 
 - Arduino Uno Rev3 ou Nano. **Pas la même carte que le tendeur de filets** : l'affichage de la matrice bloque les interruptions et ferait trembler les servos.
-- Matrice WS2812B 16 × 16 (testée sur le papier avec la BTF-LIGHTING souple FPCB, 5050, fils ECO)
+- Matrice WS2812B 16 × 16 (par exemple la BTF-LIGHTING souple FPCB, 5050, fils ECO)
 - Alimentation 5 V, 3 A minimum (4 A conseillé)
 - Condensateur 1000 µF, 10 V ou plus
 - Résistance 330 à 470 Ω
