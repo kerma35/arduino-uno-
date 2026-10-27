@@ -2,6 +2,8 @@
 
 Un boîtier avec une bouteille d'eau, une petite pompe et un tuyau qui arrive à la bouche. Tant que tu appuies sur le bouton, l'eau arrive. Le bouton peut être sur le boîtier ou sur le volant, via SimHub.
 
+Guide interactif complet, avec code à copier et calculateur de dose : https://claude.ai/artifact/8TQCpGWAgccbWX3gR7iHsV
+
 ![Principe : la pompe aspire l'eau de la bouteille et l'envoie à l'embout tant que tu appuies sur le bouton du boîtier ou du volant](../schemas/boisson_principe.svg)
 
 ## Fichiers
