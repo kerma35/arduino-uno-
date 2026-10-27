@@ -2,11 +2,7 @@
 
 Un boîtier avec une bouteille d'eau, une petite pompe et un tuyau qui arrive à la bouche. Tant que tu appuies sur le bouton, l'eau arrive. Le bouton peut être sur le boîtier ou sur le volant, via SimHub.
 
-```
- bouteille ──tuyau──> pompe péristaltique ──tuyau──> pince sur le casque ou l'arceau ──> embout à mordre
-                          │
-           12 V ── module MOSFET ── D9 de l'Uno ── bouton (D2) ou volant (SimHub)
-```
+![Principe : la pompe aspire l'eau de la bouteille et l'envoie à l'embout tant que tu appuies sur le bouton du boîtier ou du volant](../schemas/boisson_principe.svg)
 
 ## Fichiers
 
@@ -32,6 +28,8 @@ Un boîtier avec une bouteille d'eau, une petite pompe et un tuyau qui arrive à
 
 ## Câblage
 
+![Câblage : D9 vers SIG du module MOSFET, Vin et GND vers l'entrée 12 V du module, pompe sur V+ et V− avec une diode, bouton entre D2 et GND](../schemas/boisson_cablage.svg)
+
 | De | Vers | Remarque |
 | --- | --- | --- |
 | Alimentation 12 V | Jack de l'Uno | |
@@ -42,6 +40,15 @@ Un boîtier avec une bouteille d'eau, une petite pompe et un tuyau qui arrive à
 | Diode | Aux bornes de la pompe, bande côté + | Protège le MOSFET |
 | Bouton | Entre D2 et GND | |
 | USB | Uno → PC | Seulement pour le bouton du volant via SimHub |
+
+## Montage du boîtier
+
+![Montage : électronique et pompe en haut du boîtier, bouteille en bas, tuyau jusqu'à une pince et un embout à mordre](../schemas/boisson_montage.svg)
+
+1. Fixe l'Uno, le module et la pompe dans la partie haute du boîtier.
+2. Mets la bouteille en bas. Perce le bouchon de deux trous : un pour le tuyau, qui descend jusqu'au fond, et un petit pour l'air.
+3. Fais sortir le tuyau par le haut du boîtier, attache-le à l'arceau ou au casque avec une pince, et mets l'embout à mordre au bout.
+4. Place le bouton sur le dessus du boîtier, ou utilise un bouton du volant (étape 3).
 
 ## 1. Installer le programme
 
