@@ -17,6 +17,8 @@ Les prises servo du shield sont reliées directement à D9 et D10 de l'Uno, avec
 | [`schemas/`](schemas) | Schémas de ce README |
 | [`matrice_led_16x16/`](matrice_led_16x16) | Autre projet : matrice LED 16 × 16 pilotée par SimHub (voir son README) |
 | [`simhub/matrice_message.js`](simhub/matrice_message.js) | Formule SimHub de la matrice LED |
+| [`boitier_boisson/`](boitier_boisson) | Autre projet : boîtier à boisson avec pompe et bouton (voir son README) |
+| [`simhub/boisson_message.js`](simhub/boisson_message.js) | Formule SimHub du boîtier à boisson |
 
 ## Matériel
 
